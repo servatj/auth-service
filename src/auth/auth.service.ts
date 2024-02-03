@@ -46,6 +46,7 @@ export class AuthService {
   async login(user) {
     try {
       const payload = { user, sub: user.id };
+      console.log('auth.service.ts login() payload: ', payload);
       return {
         userId: user.id,
         accessToken: this.jwtService.sign(payload),
@@ -58,5 +59,9 @@ export class AuthService {
         err: 'Error while generating token.',
       };
     }
+  }
+
+  validateToken(jwt: string) {
+    return this.jwtService.verify(jwt);
   }
 }

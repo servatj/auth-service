@@ -18,7 +18,7 @@ import { LocalStrategy } from './local.strategy';
       },
     ]),
     JwtModule.register({
-      secret: 'yoursecret',
+      secret: 'secretKey',
       signOptions: { expiresIn: '60s' },
     }),
   ],
