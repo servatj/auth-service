@@ -12,14 +12,14 @@ import { LocalStrategy } from './local.strategy';
         name: 'USER_CLIENT',
         transport: Transport.TCP,
         options: {
-          host: 'localhost',
-          port: 4010,
+          host: process.env.USER_CLIENT_HOST,
+          port: parseInt(process.env.USER_CLIENT_PORT, 10),
         },
       },
     ]),
     JwtModule.register({
-      secret: 'secretKey',
-      signOptions: { expiresIn: '60s' },
+      secret: process.env.JWT_SECRET,
+      signOptions: { expiresIn: process.env.JWT_EXPIRATION },
     }),
   ],
   controllers: [AuthController],
